@@ -1,13 +1,11 @@
-package com.luitech.springbootexamples;
+package com.luitech.springbootexamples
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.Test
+import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class SpringBootExamplesApplicationTests {
-
+internal class SpringBootExamplesApplicationTests {
     @Test
-    void contextLoads() {
+    fun contextLoads() {
     }
-
 }

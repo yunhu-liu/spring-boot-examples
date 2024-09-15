@@ -1,13 +1,11 @@
-package com.luitech.springbootexamples;
+package com.luitech.springbootexamples
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.SpringApplication
+import org.springframework.boot.autoconfigure.SpringBootApplication
 
 @SpringBootApplication
-public class SpringBootExamplesApplication {
+class SpringBootExamplesApplication
 
-    public static void main(String[] args) {
-        SpringApplication.run(SpringBootExamplesApplication.class, args);
-    }
-
+fun main(args: Array<String>) {
+    SpringApplication.run(SpringBootExamplesApplication::class.java, *args)
 }

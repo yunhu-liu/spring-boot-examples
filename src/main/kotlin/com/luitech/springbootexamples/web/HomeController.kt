@@ -1,13 +1,12 @@
-package com.luitech.springbootexamples.web;
+package com.luitech.springbootexamples.web
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Controller
+import org.springframework.web.bind.annotation.GetMapping
 
 @Controller
-public class HomeController {
-
+class HomeController {
     @GetMapping("/")
-    public String home() {
-        return "home";
+    fun home(): String {
+        return "home"
     }
 }
