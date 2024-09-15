@@ -1,6 +1,5 @@
 package com.luitech.springbootexamples.domain
 
-class Taco {
-    private val name: String? = null
-    private val ingredients: List<Ingredient>? = null
-}
+data class Taco (
+    val name: String? = null,
+    val ingredients: List<Ingredient>? = null)
