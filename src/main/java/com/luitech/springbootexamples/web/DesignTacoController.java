@@ -8,10 +8,7 @@ import com.luitech.springbootexamples.domain.Taco;
 import com.luitech.springbootexamples.domain.TacoOrder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 import com.luitech.springbootexamples.domain.Ingredient;
 import com.luitech.springbootexamples.domain.IngredientType;
@@ -59,6 +56,12 @@ public class DesignTacoController {
     @GetMapping
     public String showDesignForm() {
         return "design";
+    }
+
+    @PostMapping
+    public String processTaco(Taco taco, @ModelAttribute TacoOrder tacoOrder) {
+        tacoOrder.addTaco(taco);
+        return "redirect:/orders/current";
     }
 
     private Iterable<Ingredient> filterByType(
