@@ -6,8 +6,10 @@ import java.util.stream.Collectors;
 
 import com.luitech.springbootexamples.domain.Taco;
 import com.luitech.springbootexamples.domain.TacoOrder;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import com.luitech.springbootexamples.domain.Ingredient;
@@ -59,7 +61,15 @@ public class DesignTacoController {
     }
 
     @PostMapping
-    public String processTaco(Taco taco, @ModelAttribute TacoOrder tacoOrder) {
+    public String processTaco(
+            @Valid Taco taco,
+            Errors errors,
+            @ModelAttribute TacoOrder tacoOrder) {
+
+        if (errors.hasErrors()) {
+            return "design";
+        }
+
         tacoOrder.addTaco(taco);
         return "redirect:/orders/current";
     }
