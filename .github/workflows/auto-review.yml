@@ -1,0 +1,48 @@
+name: Auto-Reviewer
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  auto-review:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Run tests
+      - name: Run tests
+        run: npm test
+
+      # Step 5: Run ESLint
+      - name: Run ESLint
+        run: npm run lint
+
+      # Step 6: Save results and leave a comment
+      - name: Leave a comment with results
+        run: |
+          echo "Tests and Linting complete!" | tee pr-comment.txt
+
+      # Step 7: Add comment to the PR
+      - name: Add comment to PR
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
+            Automated review results:
+            $(cat pr-comment.txt)
+
+
