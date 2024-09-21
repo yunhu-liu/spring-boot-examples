@@ -38,9 +38,8 @@ jobs:
 
       # Step 6: Add a comment to the PR with the results
       - name: Add comment to PR
-        uses: peter-evans/create-or-update-comment@v1
+        uses: peter-evans/create-or-update-comment@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             Automated review results: Maven build completed successfully.
