@@ -41,6 +41,7 @@ jobs:
       - name: Add comment to PR
         uses: yunhu-liu/create-or-update-comment@v1.0.0
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             Automated review results: Maven build completed successfully.
