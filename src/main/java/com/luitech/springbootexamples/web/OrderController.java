@@ -1,5 +1,6 @@
 package com.luitech.springbootexamples.web;
 
+import com.luitech.springbootexamples.data.OrderRepository;
 import com.luitech.springbootexamples.domain.TacoOrder;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,12 @@ import org.springframework.web.bind.support.SessionStatus;
 @SessionAttributes("tacoOrder")
 public class OrderController {
 
+    private OrderRepository orderRepo;
+
+    public OrderController(OrderRepository orderRepo) {
+        this.orderRepo = orderRepo;
+    }
+
     @GetMapping("/current")
     public String orderForm() {
         return "orderForm";
@@ -33,6 +40,7 @@ public class OrderController {
             return "orderForm";
         }
 
+        orderRepo.save(order);
         sessionStatus.setComplete();
         return "redirect:/";
     }
