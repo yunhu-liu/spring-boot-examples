@@ -1,14 +1,20 @@
 package com.luitech.springbootexamples.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Data
-@Table
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Ingredient {
+
     @Id
-    private final String id;
-    private final String name;
-    private final IngredientType type;
+    private String id;
+    private String name;
+    private IngredientType type;
 }
