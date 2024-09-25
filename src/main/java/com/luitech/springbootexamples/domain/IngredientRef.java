@@ -1,4 +1,4 @@
-package com.luitech.springbootexamples.data;
+package com.luitech.springbootexamples.domain;
 
 import lombok.Data;
 
