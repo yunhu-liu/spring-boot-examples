@@ -5,9 +5,8 @@ spring:
   application:
     name: spring-boot-examples
 
-  cassandra:
-    local-datacenter: datacenter1
-    schema-action: recreate
-    keyspace-name: tacocloud
-    username: cassandra
-    password: cassandra
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: tacoclouddb
