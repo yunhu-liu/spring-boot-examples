@@ -20,6 +20,7 @@ public class SpringBootExamplesApplication implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("home");
+        registry.addViewController("/login").setViewName("login");
     }
 
     @Bean
