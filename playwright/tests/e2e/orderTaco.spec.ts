@@ -5,9 +5,9 @@ test.describe('Taco Cloud', () => {
         await page.goto('http://localhost:8080');
 
         // Login steps using test IDs and existing elements
-        await expect(page.getByRole('heading', { name: 'Login', level: 2 })).toBeVisible();
-        await page.getByTestId('username-input').fill('woody');
-        await page.getByTestId('password-input').fill('password');
+        await expect(page.getByRole('heading', { name: 'Login'})).toBeVisible();
+        await page.getByTestId('username').fill('admin');
+        await page.getByTestId('password').fill('password');
         await page.getByTestId('login-button').click();
 
         // Check for the correct landing page heading to verify successful login
@@ -29,11 +29,11 @@ test.describe('Taco Cloud', () => {
 
         // Place order
         await expect(page.getByRole('heading', { name: 'Order your taco creations!', exact: true })).toBeVisible();
-        await page.locator('input[id="deliveryName"]').fill('Luitech Limited');
-        await page.locator('input[id="deliveryStreet"]').fill('1 Solander Place');
-        await page.locator('input[id="deliveryCity"]').fill('Porirua');
-        await page.locator('input[id="deliveryState"]').fill('Wellington');
-        await page.locator('input[id="deliveryZip"]').fill('5024');
+        await expect(page.locator('input[id="deliveryName"]')).toHaveValue('Admin User');
+        await expect(page.locator('input[id="deliveryStreet"]')).toHaveValue('123 Admin St');
+        await expect(page.locator('input[id="deliveryCity"]')).toHaveValue('Admin City');
+        await expect(page.locator('input[id="deliveryState"]')).toHaveValue('AD');
+        await expect(page.locator('input[id="deliveryZip"]')).toHaveValue('12345');
         await page.locator('input[id="ccNumber"]').fill('4111111111111111');
         await page.locator('input[id="ccExpiration"]').fill('12/26');
         await page.locator('input[id="ccCVV"]').fill('202');
