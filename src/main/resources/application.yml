@@ -6,13 +6,10 @@ spring:
     name: spring-boot-examples
 
   datasource:
-    url: jdbc:h2:mem:tacocloud
-    driver-class-name: org.h2.Driver
-    username: sa  # Default username for H2
-    password:  # No password for H2 by default
-    name: tacocloud
-    generate-unique-name: false
+    url: jdbc:mysql://localhost/tacocloud
+    username: tacouser
+    password: tacopassword
 
-  h2:
-    console:
-      enabled: true  # Enable H2 database console at /h2-console
+  sql:
+    init:
+      mode: always

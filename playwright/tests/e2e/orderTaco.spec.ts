@@ -29,11 +29,11 @@ test.describe('Taco Cloud', () => {
 
         // Place order
         await expect(page.getByRole('heading', { name: 'Order your taco creations!', exact: true })).toBeVisible();
-        await expect(page.locator('input[id="deliveryName"]')).toHaveValue('Admin User');
-        await expect(page.locator('input[id="deliveryStreet"]')).toHaveValue('123 Admin St');
-        await expect(page.locator('input[id="deliveryCity"]')).toHaveValue('Admin City');
-        await expect(page.locator('input[id="deliveryState"]')).toHaveValue('AD');
-        await expect(page.locator('input[id="deliveryZip"]')).toHaveValue('12345');
+        await expect(page.locator('input[id="deliveryName"]')).toHaveValue('John Doe');
+        await expect(page.locator('input[id="deliveryStreet"]')).toHaveValue('1234 Elm Street');
+        await expect(page.locator('input[id="deliveryCity"]')).toHaveValue('Springfield');
+        await expect(page.locator('input[id="deliveryState"]')).toHaveValue('IL');
+        await expect(page.locator('input[id="deliveryZip"]')).toHaveValue('62704');
         await page.locator('input[id="ccNumber"]').fill('4111111111111111');
         await page.locator('input[id="ccExpiration"]').fill('12/26');
         await page.locator('input[id="ccCVV"]').fill('202');
