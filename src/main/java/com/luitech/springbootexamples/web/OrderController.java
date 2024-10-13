@@ -42,8 +42,7 @@ public class OrderController {
     public String processOrder(
             @Valid TacoOrder order,
             Errors errors,
-            SessionStatus sessionStatus,
-            @AuthenticationPrincipal User user) {
+            SessionStatus sessionStatus) {
         log.info("Order submitted: {}", order);
 
         if (errors.hasErrors()) {
@@ -51,7 +50,6 @@ public class OrderController {
         }
 
         order.setPlacedAt(new Date());
-        order.setUser(user);
         orderRepo.save(order);
         sessionStatus.setComplete();
         

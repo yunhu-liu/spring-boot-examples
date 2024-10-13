@@ -1,22 +1,20 @@
 package com.luitech.springbootexamples.domain;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Data
-@Entity
 public class TacoOrder {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private Date placedAt;
@@ -46,13 +44,9 @@ public class TacoOrder {
     @Digits(integer=3, fraction=0, message="Invalid CVV")
     private String ccCVV;
 
-    @ManyToMany(cascade = CascadeType.ALL)
     private List<Taco> tacos = new ArrayList<>();
 
-    @ManyToOne
-    private User user;
-
     public void addTaco(Taco taco) {
-        tacos.add(taco);
+        this.tacos.add(taco);
     }
 }
